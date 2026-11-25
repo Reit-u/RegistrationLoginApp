@@ -33,10 +33,10 @@ public class RegistrationLoginApp {
             else{ 
                 System.out.println("Username Incorrectly Formatted");
             }
-            }
+           }
         String password = "";
         while (true) {
-        System.out.print("Enter Password: ");
+        System.out.print("Enter Password (Password must be in caps contain special characters(e.g @) and numbers: ");
         password = scanner.nextLine();
         if (user.checkPasswordComplexity(password)) {
             System.out.println("Password verified");
@@ -44,7 +44,7 @@ public class RegistrationLoginApp {
         }
         else{
             System.out.println("Password is not correctly formatted");
-        }
+          }
         }
         String cell = "";
         while (true) {
@@ -57,13 +57,36 @@ public class RegistrationLoginApp {
         }
         else{
             System.out.println("Cellphone number is incorrectly formatted");
-        }
+           }
             
         }
         
        user.registerUser(username, password, cell);
-       System.out.println("Registration Complete");
-        scanner.close();
+
+       System.out.println("Registration Complete.");
+       
+       boolean loginStatus = false;
+       
+       while (!loginStatus){
+           System.out.println("==LOGIN==");
+           
+           System.out.println("Enter Username: ");
+           String loginUsername =  scanner.nextLine();
+           
+           System.out.println("Enter Password: ");
+           String loginPassword = scanner.nextLine();
+           
+           loginStatus = user.loginUser(loginUsername, loginPassword);
+           System.out.println(user.returnLoginStatus(loginStatus));
+           if (!loginStatus){
+               System.out.println("Please try again.");
+           }
+           
+       }
+       Chatbox chatbox = new Chatbox();
+       chatbox.startChatbox(scanner);
+       
+       scanner.close();
     }
-    
 }
+

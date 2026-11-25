@@ -78,7 +78,7 @@ import java.util.regex.Pattern;
          return false; 
      } 
      String regex = "^\\+\\d{10,12}$"; 
-     return Pattern.matches(regex, cellPhoneNumber); 
+     return Pattern.matches(regex, cellPhoneNumber);  
  }
  public String registerUser(String username, String password, String cellPhoneNumber) { 
      if (!checkUserName(username)) { 
@@ -97,8 +97,9 @@ import java.util.regex.Pattern;
  }
  public boolean loginUser(String enteredUsername, String enteredPassword) { 
      return this.username != null && 
-     this.password != null && this.password != null && this.username.equals(enteredUsername) &&
-     this.password.equals(enteredPassword); 
+            this.password != null && 
+            this.username.equals(enteredUsername) &&
+            this.password.equals(enteredPassword); 
  }
  public String returnLoginStatus(boolean isLoggedIn) { 
      if (isLoggedIn) { 
